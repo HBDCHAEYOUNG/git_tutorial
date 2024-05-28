@@ -1,0 +1,63 @@
+Git
+
+1. 저장(백업)
+- add : 선별
+- commit : 새 버전
+- push:
+
+2.수정(되돌리자)
+- reset --hard HEAD^ : 수정한 것 통째 
+- reset --mixed HEAD^ : add 한 것까지
+- reset --soft HEAD^ : commit 한 것 까지
+-> HEAD : 최근부터 / ^ : 하나 되돌려
+
+
+
+- diff : 변경내역들끼리의 비교 결과
+  1. git diff 비교대상commit 기준commit
+    -> log 찍었을때 commit 옆의 문자열(commit hash) 입력
+    -> git diff HEAD HEAD^ = 이전과 전전 비교
+    -> git diff HEAD = 이전과 현재 비교
+- revert : 되돌리기 (reset은 과거이력 삭제 / revert도 -n 옵션으로 commit 남기지 않을 수 있음)
+  -> git revert 되돌리고싶은 commit hash
+- log : commit 내역 보기
+
+
+Repository끼리의 상호작용 종류
+1. 원격저장소 조회(추가하기) remote
+git remote add <단축이름> <url>
+
+2. 원격저장소에 밀어넣기 push
+3. 원격저장소 갖고 와서 합치기 pull
+4. 원격저장소 일단 갖고만 오기 patch
+5. 원격저장소 복사하기 clone
+
+
+
+협업 시나리오 (O-변함/X-안변함)
+1. 나 O / 원격 X
+   a. push
+2. 나 X / 원격 O
+   a. pull & push
+3. 나 O / 원격  O
+   a. rebase
+   b. pull request
+
+원격 repository 생성
+폴더 git init
+git status -> 로컬 상태(변화)확인
+git add .  / commit 
+git log (커밋 생성 확인)
+git remote add origin "깃repository주소" ->오리진이름으로 원격저장소 추가
+git remote -v ->원격저장소 확인
+git push -u origin master -> 원격저장소에 커밋 푸쉬됨
+
+- 협업
+settings coraborators 추가하는 방식으로push 권한 줄 수 있음
+로컬 - 폴더 생성
+협업대상 포크하기->복사됨
+fork한 곳에서 클론 하기 clone 
+
+
+
+
